@@ -1,0 +1,39 @@
+<script>
+
+function main(){
+
+const largura = Number(prompt("Informe em cm, a largura da piscina:"))
+const comprimento = Number(prompt("Informe em cm, o comprimento da piscina:"))
+const profundidade = Number(prompt ("Informe em cm, a profuncidade da piscina:"))
+const capacidademaxima = Number((largura*comprimento*profundidade)/1000)
+const nivelideal = Number(capacidademaxima*0.85)
+const valoragua = Number(prompt ("Informe o valor a ser pago a cada 1000 litros:"))
+const valorparaencher = calcular_valor_para_encher(capacidademaxima,valoragua)
+const gastomensal = calcular_gasto_mensal(nivelideal,valoragua)
+
+alert("A capacidade da psicina é de: " +  capacidademaxima+"l")
+alert("É recomendado encher a piscina só até" +nivelideal+"l")
+alert("Para encher a sua piscina será necessário: R$" + gastomensal)
+alert("E para manter sua piscina no nivel de água ideal, sera necessário R$" +gastomensal +" mensais")
+
+
+function calcular_gasto_mensal(nivelideal,valoragua)
+const aguamensal = nivelideal*0.1
+if(aguamensal%1000==0){
+gastomensal = (aguamensal/1000)*valoragua
+}else{
+gastomensal = (Math.floor(aguamensal/1000)+1)*valoragua
+}
+
+function calcular_valor_para_encher(capacidademaxima,valoragua)
+if(capacidademaxima%1000==0){
+valorparaencher= (capacidademaxima/1000)*valoragua
+}else{
+valorparaencher = ((Math.floor(capacidademaxima/1000))+1)*valoragua
+}
+
+}
+
+main()
+
+</script>

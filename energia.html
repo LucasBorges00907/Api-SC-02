@@ -1,0 +1,81 @@
+<script>
+function main(){
+//a cada 100 KWh de consumo será acrescido uma taxa extra de R$ 8,00.
+
+//Consumo de até 30KWh isento de tarifa. 
+//Até 100 KWh será cobrado R$ 0,59 por cada um cada de todo os KWh consumidos;
+//acima de 100KWh o valor de R$ 0,75 por cada um de todos os KWh consumidos. 
+
+//Sobre o valor tarifado/apurado são 25% de ICMS e 15% de PIS/CONFIS. 
+
+//A taxa de iluminação pública é cobrada apenas para os consumidores que passarem de 80KWh por mês, 
+//e custa 6% do valor tarifado (antes do impostos).
+
+const leituranterior = Number(prompt("Leitura anterior: "))
+const leituratual = Number(prompt("Leitura atual: "))
+const consumoemkw = leituratual-leituranterior
+const tarifa = calcular_tarifa(consumoemkw)
+const taxadeiluminacao = calcular_taxadeiluminacao(consumoemkw,tarifa)
+const pis = calcular_pis(tarifa)
+const icms = calcular_ICMs(tarifa)
+const bandeira = calcular_bandeira(consumoemkw)
+const valorconta = tarifa + bandeira + taxadeiluminacao + icms + pis
+
+
+alert("======Talão de Energia======")
+alert("Consumo      "+ consumoemkw + "Kwh")
+alert("Valor da conta: R$ " + valorconta)
+alert("Valor do ICMS: R$" + icms)
+alert("Valor do PIS/CONFIS: R$" + pis)
+alert("Taxa de iluminação: R$" + taxadeiluminacao)
+
+ehisento(consumoemkw)
+
+
+function ehisento(consumoemkw){
+if(consumoemkw<=30){
+return true
+} else{
+return false
+} 
+}
+function calcular_tarifa(consumoemkw){
+if (ehisento){
+tarifa = 0
+}else if(consumoemkw<=100){
+tarifa = (consumoemkw*0.59) 
+return tarifa
+} else{
+tarifa = (consumoemkw*0.75) 
+return tarifa
+}
+}
+
+function calcular_taxadeiluminacao(consumoemkw,tarifa){
+if (consumoemkw<=80){
+taxadeiluminacao = 0
+} else {
+taxadeiluminacao = tarifa*0.06
+} 
+}
+
+function calcular_pis(tarifa){
+pis = 0.15*tarifa
+}
+
+function calcular_ICMs(tarifa){
+icms = 0.25*tarifa
+}
+
+function calcular_bandeira(consumoemkw){
+if(consumoemkw<100){
+bandeira = 0
+}else{
+bandeira = (Math.floor(consumoemkw/100)) * 8
+}
+}
+
+}
+
+main()
+</script>

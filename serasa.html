@@ -1,0 +1,44 @@
+<script>
+function main (){
+const criterioa = Number(prompt("Insira sua pontuacao em percentual no critério a: "))
+const criteriob = Number(prompt("Insira sua pontuacao em percentual no critério b: "))
+const criterioc = Number(prompt("Insira sua pontuacao em percentual no critério c: "))
+const pontuacaoserasa1 = (criterioa/100)*260 + (criteriob/100)*570 + (criterioc/100)*170
+const pontuacaoserasa2 = (criterioa/100)*620 + (criteriob/100)*190 + (criterioc/100)*190
+
+ verificar_situação_score_antigo(pontuacaoserasa1)
+ verificar_situação_score_novo(pontuacaoserasa2)
+
+
+
+
+
+
+function verificar_situação_score_novo(pontuacaoserasa1)
+if (pontuacaoserasa2<=300){
+alert("Baixo")
+}else if(pontuacaoserasa2<=500){
+alert("Regular")
+}else if(pontuacaoserasa2<=700){
+alert("Bom")
+}else{
+alert("Muito bom")
+}
+
+
+function verificar_situação_score_antigo(pontuacaoserasa1){
+if (pontuacaoserasa1<400){
+alert("Baixo")
+}else if(pontuacaoserasa1<600){
+alert("Regular")
+}else if(pontuacaoserasa1<800){
+alert("Bom")
+}else{
+alert("Muito bom")
+}
+
+} 
+
+}
+main()
+</script>

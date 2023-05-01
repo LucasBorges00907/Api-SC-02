@@ -1,0 +1,65 @@
+<script>
+function main(){
+const objetivo = prompt("Qual o seu objetivo? ")
+const ValordoObjetivo = Number(prompt("Valor do objetivo($): "))
+const salario = Number(prompt ("Insira seu salário: "))
+const percentualdosalario = verificar_percentual_salario(salario,percentualdosalario)
+const rendimentodoinvestimento = verificar_rendimento(rendimentodoinvestimento)
+const mesesdoobjetivo = calcular_meses_para_o_objetivo(ValordoObjetivo,salario,percentualdosalario,rendimentodoinvestimento)
+const aportemensal = (percentualdosalario/100)*salario
+//O percentual é dividido por 100, pois eu solicito os dados em (%), ou seja, para um investimento de 25%, o usuário deve digitar: 25
+
+alert(AnoseMeses)
+
+
+
+
+
+
+
+let valoratual = 0
+let meses = 0
+
+const AnoseMeses = mostrar_meses_e_anos(meses)
+
+function calcular_meses_para_o_objetivo(ValordoObjetivo,salario,percentualdosalario,rendimentodoinvestimento){
+while(ValordoObjetivo>valoratual){
+valoratual = (valoratual+ aportemensal)* rendimentodoinvestimento
+meses = meses+1
+}
+}
+
+function mostrar_meses_e_anos(meses){
+if(meses<=12){
+return 
+alert(("O seu objetivo será alcançado em"+ meses +"meses")) 
+}else{
+const anos = Math.floor(meses/12)
+const mesesx = meses%12
+return 
+alert(("O seu objetivo será alcançado em " + anos + "anos" + "e" + meses + "meses"))   
+} 
+
+}
+}
+
+function verificar_percentual_salario(salario,percentualdosalario)
+const percentualsalario = Number(prompt("Quanto deseja investir mensalmente em (%) ? "))
+if (percentualdosalario< 30){
+return percentualsalario
+}else{
+Number(prompt(("O percentual deve ser inferior a 30% do seu salário! Insira um novo percentual: ")))
+} 
+
+function verificar_rendimento(rendimentodoinvestimento)
+const rendimentoinvestimento = Number(prompt("Insina o rendimento do investimento em %: "))
+if(rendimentoinvestimento<0.01 || rendimentoinvestimento>1){
+Number(prompt("O rendimento não está de acordo com a faixa determinada, insira outro valor:"))
+}else{
+return rendimentoinvestimento
+}
+
+
+
+main()
+</script>

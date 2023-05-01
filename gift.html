@@ -1,0 +1,65 @@
+
+<script>
+function main(){
+const nome = prompt("Digite seu nome: ")
+const NumeroDeCompras = Number(prompt("Número de compras: "))
+
+let valormensal = 0
+
+while ((NumeroDeCompras-1) >0){
+let valordacompra = Number (prompt("Valor da compra: "))
+let valormensal = valormensal + valordacompra
+} 
+
+const valormensalinicial = valormensal
+
+alert ("Faturamento total: R$ " + valormensal)
+
+let cashback = 0
+
+while(valormensal>750){                                        
+let cashback = cashback + cashback25(valormensal)
+} while (valormensal>500 && valormensal <=750){
+let cashback = cashback + cashback8(valormensal)
+} while (valormensal>250  && valormensal <=500){
+let cashback = cashback + cashback7(valormensal)
+} while (valormensal<250 && valormensal > 0){
+let cashback = cashback + cashback5(valormensal)
+}
+
+let cashbackpercentual = (cashback/valormensalinicial)*100
+
+alert("Cashback total pago: R$" +cashback)
+alert("Cashback (%)" + cashbackpercentual.toFixed(2) )
+
+function cashback25(valormensal){
+if(valormensal>750){
+let cashbackx = (valormensal-750)* 0.25
+let valormensal = 750
+return cashbackx}  
+} 
+
+function cashback8 (valormensal){
+if(valormensal>500){
+let cashbackx = (valormensal-500)*0.08
+let valormensal = 500
+return cashbackx}  }
+}
+
+function cashback7 (valormensal){
+if(valormensal>250){
+let cashbackx = (valormensal-250)*0.07
+let valormensal = 250
+return cashbackx}  
+}
+
+function cashback5 (valormensal){
+if(valormensal<250){
+let cashbackx= (valormensal)*0.05
+let valormensal = 0
+return cashbackx}  
+}
+
+main()
+</script>
+

@@ -1,0 +1,62 @@
+<script>
+function main(){
+
+const rendamensal = Number(prompt("Digite sua renda mensal ($): "))
+const valoremprestimo = Number (prompt("Insira o valor do empréstimo ($):"))
+const prazodesejado = Number(prompt("Insira o prazo desejado em meses: "))
+const salariominimo = 1302
+const selic = 13.75/100
+const iof = (0.0038*valoremprestimo) + (0.000082*(prazodesejado*30))
+const taxadejuros = calcular_taxa_dejuros(prazodesejado,selic)
+const juros = taxadejuros*(valoremprestimo+iof)
+const TotalaPagar = valoremprestimo+juros
+const valorparcela = TotalaPagar/prazodesejado
+const PercentualDeRendaMensal = ((valorparcela/rendamensal).toFixed(2))*100
+
+alert("O valor do IOF é de R$" + iof)
+alert("O Valor dos juros a pagar é de R$" + juros)
+alert("O valor total a pagar é de R$" + TotalaPagar)
+alert("O valor mensal da parcela é de R$" + valorparcela)
+alert("O compromentimento da renda mensal é de R$" + PercentualDeRendaMensal + "%")
+//A verificação de empréstimo Aprovado ou negado é feito pela função verificar_valor_emprestimo
+// e o usuário so consegue prosseguir se a renda atender aos requisitos
+
+
+function calcular_taxa_dejuros(prazodesejado,selic){
+if(prazodesejado>18){
+juros = 130/100 * selic
+}else if(prazodesejado>12){
+juros = selic
+}else if(prazodesejado>7){
+juros = 75/100*selic
+}else{
+juros = 50/100*selic
+}  
+}
+
+
+function verificar_prazo_desejado(prazodesejado){
+if(prazodesejado>=2 && prazodesejado<=24){
+return true
+} else{
+return Number(prompt("O prazo deve ser maior que 2 meses e menor que 24, insira um novo prazo: "))
+} 
+}
+
+function verificar_valor_emprestimo(rendamensal,valoremprestimo){
+if(valoremprestimo>salariominimo && valoremprestimo<rendamensal*0.4){
+return true
+} else {
+return Number(prompt("O valor não atende aos requisitos do empréstimo, insira um novo valor: "))
+} 
+}
+
+
+
+
+
+
+}
+
+main()
+</script>
